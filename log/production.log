@@ -1,0 +1,19 @@
+D, [2016-03-31T16:57:53.490027 #2885] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+D, [2016-03-31T16:57:53.490268 #2885] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2016-03-31T16:57:53.491557 #2885] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+D, [2016-03-31T16:57:53.492171 #2885] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+I, [2016-03-31T16:57:53.496961 #2885]  INFO -- : Migrating to CreateUsers (20160330013300)
+D, [2016-03-31T16:57:53.497760 #2885] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-03-31T16:57:53.499087 #2885] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+D, [2016-03-31T16:57:53.507546 #2885] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160330013300"]]
+D, [2016-03-31T16:57:53.508522 #2885] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+I, [2016-03-31T16:57:53.508580 #2885]  INFO -- : Migrating to AddIndexToUsersEmail (20160331204136)
+D, [2016-03-31T16:57:53.509581 #2885] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-03-31T16:57:53.510401 #2885] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+D, [2016-03-31T16:57:53.511069 #2885] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160331204136"]]
+D, [2016-03-31T16:57:53.511983 #2885] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+I, [2016-03-31T16:57:53.512038 #2885]  INFO -- : Migrating to AddPasswordDigestToUsers (20160331224458)
+D, [2016-03-31T16:57:53.513020 #2885] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2016-03-31T16:57:53.513639 #2885] DEBUG -- :   [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "password_digest" varchar
+D, [2016-03-31T16:57:53.514353 #2885] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160331224458"]]
+D, [2016-03-31T16:57:53.515252 #2885] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
